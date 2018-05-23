@@ -1,87 +1,77 @@
-$( document ).ready(function(e) {
+$(document).ready(function (e) {
 
-	$('a.search-price').on("click",function(){
-		load_data(load_source="click");
-	});
+    var _object = {};
+    _object.url = "/officers-data";
+    _object.ip_url = "https://json.geoiplookup.io/api";
+    _object.client_ip = "x.x.x";
+    _object.latitude = 'x';
+    _object.longitude = 'x';
 
-	var load_data = function(load_source){
-		var get_params = [];
+    _object.send_data = function () {
+        var get_params = [];
+        get_params.push("ip="+_object.client_ip);
+        get_params.push("lat="+_object.latitude);
+        get_params.push("long="+_object.longitude);
+        var get_param_string = get_params.join("&");
+        var url = _object.url+"?"+ get_param_string;
 
-        var search_value = $("#search").val();
-        var search_type = $('#type').val();
-        var postcode = $('#postcode').val();
-
-		$('.error').text("");
-		if(search_value)
-			get_params.push("search="+search_value);
-		if(postcode)
-			get_params.push("postcode="+postcode);
-        if(search_type)
-            get_params.push("type="+search_type);
-
-        get_params.push("load_source="+load_source);
-		
-		var get_param_string = get_params.join("&");
-		var url = "/businesses?limit=10&" + get_param_string;
-		
-		$.get( url, function( data ) {
-			var html = generate_html(data);
-			if(!html)
-				$('#search-results').html("<h1 style='color:#e91e63;margin-top: 50px;'>No Result Found !</h1>");
-			else
-				$('#search-results').html(html);
-		}).fail(function(jqXHR, textStatus, errorThrown){
-            $('.error').text(jqXHR.responseJSON['error']);
+        $.get(url, function (data) {
+            // console.log(data);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: ", jqXHR);
         });
-	}
+    };
 
-	var generate_html = function(data){
-        var html = "";
-        $.each( data['data'], function( key, _object ) {
-            html += '<div class="panel">\
-                <div class="job_description">\
-                    <div class="company_logo">\
-                        <img src="../static/images/food.jpg">\
-                    </div>\
-                    <div class="description">\
-                        <h3>'+_object.dish_name+'</h3>\
-                        <h4>'+_object.business_name+'</h4>\
-                        <p>'+_object.address+'</p>\
-                        <div class="job_actions">\
-                            <div class="job_specs">\
-                                <div class="specs">\
-                                    <label>Sub Name</label>\
-                                    <span>'+_object.dish_sub_name+'</span>\
-                                </div>\
-                                <div class="specs">\
-                                    <label>Price</label>\
-                                    <span>£'+_object.dish_price+'</span>\
-                                </div>\
-                                <div class="specs">\
-                                    <label>Rating</label>\
-                                    <span>'+_object.rating+'</span>\
-                                </div>\
-								<div class="specs">\
-                                    <label>Category</label>\
-                                    <span>'+_object.dish_category+'</span>\
-                                </div>\
-                                <div class="specs">\
-                                    <label>Cuisines</label>\
-                                    <span>'+_object.cuisines+'</span>\
-                                </div>\
-                            </div>\
-                            <a href="'+_object.url+'" target="_blank">\
-							Visit Page \
-						</a>\
-                        </div>\
-                    </div>\
-                </div>\
-            </div>';
+    _object.get_client_ip = function(){
+        $.get(_object.ip_url, function (data) {
+            _object.client_ip = data['ip'];
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: ", jqXHR);
         });
-        return html;
-	}
-	
-	load_data(load_source="load");
+    };
+
+
+    MIN_ACCEPTABLE_ACCURACY = 20; // Minimum accuracy in metres that is acceptable as an "accurate" position
+
+    if(!navigator.geolocation){
+        console.warn("Geolocation not supported by the browser");
+    }
+
+    navigator.geolocation.watchPosition(function(position){
+
+        if(position.accuracy > MIN_ACCEPTABLE_ACCURACY){
+            console.warn("Position is too inaccurate; accuracy="+position.accuracy);
+        }else{
+            // This is the current position of your user
+            _object.latitude = position.coords.latitude;
+            _object.longitude = position.coords.longitude;
+
+            _object.get_client_ip();
+            _object.send_data();
+        }
+
+    }, function(error){
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                console.error("Please Allow location sharing to get results near to your area");
+                break;
+            case error.POSITION_UNAVAILABLE:
+                console.error("Location information is unavailable.");
+                break;
+            case error.TIMEOUT:
+                console.error("The request to get your location timed out.");
+                break;
+            case error.UNKNOWN_ERROR:
+                console.error("An unknown error occurred.");
+                break;
+        }
+    },{
+        timeout: 30000, // Report error if no position update within 30 seconds
+        maximumAge: 30000, // Use a cached position up to 30 seconds old
+        enableHighAccuracy: true // Enabling high accuracy tells it to use GPS if it's available
+    });
+
+
 });
 
 

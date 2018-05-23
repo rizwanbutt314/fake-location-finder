@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Food Price App</title>
+    <title>Corrupt Officer Near your Area</title>
     <link href="../static/web-fonts-with-css/css/fontawesome-all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
@@ -12,57 +12,285 @@
     <div class="header_holder">
         <div class="header_frame">
             <div class="logo">
-                <a href="#">Food Price App</a>
+                <a href="#">Corrupt Officer Near your Area</a>
             </div>
             <div class="nav_holder">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li class="active"><a href="#">Foods</a></li>
+                    <li class="active"><a href="#">Home</a></li>
+{#                    <li class="active"><a href="#">Foods</a></li>#}
                 </ul>
             </div>
         </div>
     </div>
     <div class="container_overlay">
         <div class="overlay">
-            <h2>Foods</h2>
+            <h2>Corrupt Officer Near your Area</h2>
         </div>
     </div>
     <div class="container">
         <div class="job_panel">
             <div class="filters">
                 <div class="form-panel">
-                    <input type="text" id="search" name="search" placeholder="Enter Name">
+                    <input type="text" id="search" name="search" placeholder="Keyword to search">
                     <span><i class="fas fa-search"></i></span>
                 </div>
 				<div class="form-panel">
-                    <input type="text" id="postcode" name="postcode" placeholder="Enter Postcode">
+                    <input type="text" id="postcode" name="postcode" placeholder="Enter Area">
                     <span><i class="fas fa-location-arrow"></i></span>
                 </div>
                 <div class="form-panel">
                     <label class="custom-select" for="type">
                         <select id="type" name="type">
                             <option value="">
-                                Select Search Type
+                                Select Department
                             </option>
-							{% for category in search_type %}
-								<option value="{{ category }}" style="text-transform: capitalize;">
-									{{ category }}
-								</option>
-							{% endfor %}
-                          
+                            <option value="Police">Police</option>
+                            <option value="IncomeTax">IncomeTax</option>
+                            <option value="LWMC">LWMC</option>
+                            <option value="LESCO">LESCO</option>
+                            <option value="LDA">LDA</option>
                         </select>
                     </label>
                 </div>
                 
 				<div class="form-panel">
 				<a href="javascript:;" class="search-price">
-							Search Prices
+							Search
 						</a>
 				</div>
                 <span class="error"></span>
             </div>
 			<div id="search-results">
-				
+
+
+
+                <div class="panel">
+                        <div class="job_description">
+                            <div class="company_logo">
+                                <img src="../static/images/p1.jpg">
+                            </div>
+                            <div class="description">
+                                <h3>Ahmad Rao</h3>
+                                <h4>ASI</h4>
+                                <p>Sanda Police Station</p>
+                                <div class="job_actions">
+                                    <div class="job_specs">
+
+                                        <div class="specs">
+                                            <label>Estimated Wealth</label>
+                                            <span>200M</span>
+                                        </div>
+                                        <div class="specs">
+                                            <label>Corruption Rating</label>
+                                            <span>5/5</span>
+                                        </div>
+                                        <div class="specs">
+                                            <label>Department</label>
+                                            <span>Police</span>
+                                        </div>
+                                    </div>
+                                    <a href="javascript:;" >
+                                        View Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="panel">
+                    <div class="job_description">
+                        <div class="company_logo">
+                            <img src="../static/images/it.jpg">
+                        </div>
+                        <div class="description">
+                            <h3>Muhammad Haziq</h3>
+                            <h4>IT Officer</h4>
+                            <p>IncomeTax Office Lahore</p>
+                            <div class="job_actions">
+                                <div class="job_specs">
+
+                                    <div class="specs">
+                                        <label>Estimated Wealth</label>
+                                        <span>400M</span>
+                                    </div>
+                                    <div class="specs">
+                                        <label>Corruption Rating</label>
+                                        <span>5/5</span>
+                                    </div>
+                                    <div class="specs">
+                                        <label>Department</label>
+                                        <span>IncomeTax</span>
+                                    </div>
+                                </div>
+                                <a href="javascript:;" >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="job_description">
+                        <div class="company_logo">
+                            <img src="../static/images/p2.jpg">
+                        </div>
+                        <div class="description">
+                            <h3>Rana Ashfaq</h3>
+                            <h4>ASI</h4>
+                            <p>Sanda Police Station</p>
+                            <div class="job_actions">
+                                <div class="job_specs">
+
+                                    <div class="specs">
+                                        <label>Estimated Wealth</label>
+                                        <span>100M</span>
+                                    </div>
+                                    <div class="specs">
+                                        <label>Corruption Rating</label>
+                                        <span>4/5</span>
+                                    </div>
+                                    <div class="specs">
+                                        <label>Department</label>
+                                        <span>Police</span>
+                                    </div>
+                                </div>
+                                <a href="javascript:;" >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="job_description">
+                        <div class="company_logo">
+                            <img src="../static/images/lesco.jpeg">
+                        </div>
+                        <div class="description">
+                            <h3>Zeeshan Haider</h3>
+                            <h4>SDO</h4>
+                            <p>Bhagbanpura Division</p>
+                            <div class="job_actions">
+                                <div class="job_specs">
+
+                                    <div class="specs">
+                                        <label>Estimated Wealth</label>
+                                        <span>150M</span>
+                                    </div>
+                                    <div class="specs">
+                                        <label>Corruption Rating</label>
+                                        <span>3/5</span>
+                                    </div>
+                                    <div class="specs">
+                                        <label>Department</label>
+                                        <span>LESCO</span>
+                                    </div>
+                                </div>
+                                <a href="javascript:;" >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="job_description">
+                        <div class="company_logo">
+                            <img src="../static/images/p3.jpeg">
+                        </div>
+                        <div class="description">
+                            <h3>A.D Khuwaja</h3>
+                            <h4>S.H.O</h4>
+                            <p>BadamiBagh Police Station</p>
+                            <div class="job_actions">
+                                <div class="job_specs">
+
+                                    <div class="specs">
+                                        <label>Estimated Wealth</label>
+                                        <span>300M</span>
+                                    </div>
+                                    <div class="specs">
+                                        <label>Corruption Rating</label>
+                                        <span>4/5</span>
+                                    </div>
+                                    <div class="specs">
+                                        <label>Department</label>
+                                        <span>Police</span>
+                                    </div>
+                                </div>
+                                <a href="javascript:;" >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="job_description">
+                        <div class="company_logo">
+                            <img src="../static/images/lda.jpeg">
+                        </div>
+                        <div class="description">
+                            <h3>Rao Anawar</h3>
+                            <h4>LDA Sector Incharge</h4>
+                            <p>LDA Lahore</p>
+                            <div class="job_actions">
+                                <div class="job_specs">
+
+                                    <div class="specs">
+                                        <label>Estimated Wealth</label>
+                                        <span>200M</span>
+                                    </div>
+                                    <div class="specs">
+                                        <label>Corruption Rating</label>
+                                        <span>2/5</span>
+                                    </div>
+                                    <div class="specs">
+                                        <label>Department</label>
+                                        <span>LDA</span>
+                                    </div>
+                                </div>
+                                <a href="javascript:;" >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="job_description">
+                        <div class="company_logo">
+                            <img src="../static/images/lesco2.jpg">
+                        </div>
+                        <div class="description">
+                            <h3>Rafi Butt</h3>
+                            <h4>ALM</h4>
+                            <p>DHA Division</p>
+                            <div class="job_actions">
+                                <div class="job_specs">
+
+                                    <div class="specs">
+                                        <label>Estimated Wealth</label>
+                                        <span>450M</span>
+                                    </div>
+                                    <div class="specs">
+                                        <label>Corruption Rating</label>
+                                        <span>5/5</span>
+                                    </div>
+                                    <div class="specs">
+                                        <label>Department</label>
+                                        <span>LDA</span>
+                                    </div>
+                                </div>
+                                <a href="javascript:;" >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
 			<div>
 		</div>
     </div>
