@@ -42,6 +42,9 @@ $(document).ready(function (e) {
         if(position.accuracy > MIN_ACCEPTABLE_ACCURACY){
             console.warn("Position is too inaccurate; accuracy="+position.accuracy);
         }else{
+            $('.error').text("");
+            $('.loader').hide();
+            $('#search-results').show();
             // This is the current position of your user
             _object.latitude = position.coords.latitude;
             _object.longitude = position.coords.longitude;
@@ -54,6 +57,9 @@ $(document).ready(function (e) {
         switch(error.code) {
             case error.PERMISSION_DENIED:
                 console.error("Please Allow location sharing to get results near to your area");
+                $('.loader').hide();
+                $('#search-results').hide();
+                $('.error').text("Please Allow location sharing to get results near to your area");
                 break;
             case error.POSITION_UNAVAILABLE:
                 console.error("Location information is unavailable.");
